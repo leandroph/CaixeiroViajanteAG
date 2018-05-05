@@ -18,8 +18,29 @@ public class App {
      */
     public static void main(String[] args) {
         Graphic.createWindow();
+        
+        for (int i = 0; i < 10; i++) {
+            for (int b = 0; b < 6; b++) {
+                TourManager.addCity(new City("", 10 + i * 20, 10 + b * 20));
+            }
+        }
 
-        /* Crias as cidades que irão pertencer a cada rota */
+        //Initialize population
+        Population pop = new Population(20000, true);
+        System.out.println("Distância inicial: " + pop.getFittest().getDistance());
+
+        //Evolve population for x generations
+        for (int i = 0; i < 300; i++) {
+            pop = GA.evolvePopulation(pop);
+            Graphic.setGeneration(i + 1);
+        }
+
+        // Print final results
+        System.out.println("Distância final: " + pop.getFittest().getDistance());
+        System.out.println("Solução:");
+        System.out.println(pop.getFittest());
+
+//        /* Crias as cidades que irão pertencer a cada rota */
 //        City city = new City("Lisboa", 60, 200);
 //        TourManager.addCity(city);
 //        City city2 = new City("Santarém", 180, 200);
@@ -70,13 +91,13 @@ public class App {
 //        TourManager.addCity(city24);
 //        City city25 = new City("Maia", 100, 95);
 //        TourManager.addCity(city25);
-//        
-//        
+        
+        
 //        //Cria uma população de rotas (conjunto de rotas)
 //        Population pop = new Population(50, true);
 //        
 //        //Imprime o comprimento da melhor rota da população inicial
-//        System.out.println("Distância inicial: " + (int)pop.getFi|ttest().getDistance());
+//        System.out.println("Distância inicial: " + (int)pop.getFittest().getDistance());
 // 
 //        //Evoluí a população por 200 gerações
 //        for (int i = 0; i < 200; i++) {
@@ -88,25 +109,8 @@ public class App {
 //        //Imprime a solução encontrada para o problema
 //        System.out.println("Solução:");
 //        System.out.println(pop.getFittest()); 
-        for (int i = 0; i < 10; i++) {
-            for (int b = 0; b < 6; b++) {
-                TourManager.addCity(new City("", 10 + i * 20, 10 + b * 20));
-            }
-        }
 
-        //Initialize population
-        Population pop = new Population(20000, true);
-        System.out.println("Distância inicial: " + pop.getFittest().getDistance());
 
-        //Evolve population for x generations
-        for (int i = 0; i < 300; i++) {
-            pop = GA.evolvePopulation(pop);
-            Graphic.setGeneration(i + 1);
-        }
-
-        // Print final results
-        System.out.println("Distância final: " + pop.getFittest().getDistance());
-        System.out.println("Solução:");
-        System.out.println(pop.getFittest());
+        
     }
 }
