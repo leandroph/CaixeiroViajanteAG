@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  */
 public class Graphic extends JPanel{
  private static final long serialVersionUID = 210120171359L;
- public static JFrame _window = new JFrame("Inteligencia Artificial - Algoritmo Genético - Leandro Heck");
+ public static JFrame _window = new JFrame("Inteligencia Artificial - Algoritmo Genético - Cristiano Künas, Elison Christoph, Leandro Heck");
  public static Graphic g = null;
  public static Tour _bestTour;
  public static Tour _lastTour;
