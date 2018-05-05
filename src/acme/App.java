@@ -19,13 +19,14 @@ public class App {
     public static void main(String[] args) {
         Graphic.createWindow();
         
+        // laço for para criar as cidades a serem percorridas no gráfico
         for (int i = 0; i < 10; i++) {
             for (int b = 0; b < 6; b++) {
                 TourManager.addCity(new City("", 10 + i * 20, 10 + b * 20));
             }
         }
 
-        //Initialize population
+        //Inicializa a população
         Population pop = new Population(20000, true);
         System.out.println("Distância inicial: " + pop.getFittest().getDistance());
 
@@ -35,7 +36,7 @@ public class App {
             Graphic.setGeneration(i + 1);
         }
 
-        // Print final results
+        // Imprime os resultados finais
         System.out.println("Distância final: " + pop.getFittest().getDistance());
         System.out.println("Solução:");
         System.out.println(pop.getFittest());
